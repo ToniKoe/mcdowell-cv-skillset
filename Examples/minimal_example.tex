@@ -1,0 +1,75 @@
+    %% The MIT License (MIT)
+%%
+%% Copyright (c) 2015 Daniil Belyakov
+%%
+%% Permission is hereby granted, free of charge, to any person obtaining a copy
+%% of this software and associated documentation files (the "Software"), to deal
+%% in the Software without restriction, including without limitation the rights
+%% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+%% copies of the Software, and to permit persons to whom the Software is
+%% furnished to do so, subject to the following conditions:
+%%
+%% The above copyright notice and this permission notice shall be included in all
+%% copies or substantial portions of the Software.
+%%
+%% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+%% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+%% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+%% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+%% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+%% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+%% SOFTWARE.
+
+% The font could be set to Windows-specific Calibri by using the 'calibri' option
+\documentclass[a4paper]{mcdowellcv}
+
+
+% Set applicant's personal data for header
+\name{Erika Musterfrau}
+\address{Berlin, Germany \linebreak 
+\link{https://github.com/ErikaMusterfrau}{GitHub}, \link{https://www.linkedin.com/in/erika_musterfrau/}{LinkedIn}}
+\contacts{
++49 123 456 789 00 \linebreak 
+\link{mailto:erika@musterfrau.com}{erika@musterfrau.com}}
+
+\begin{document}
+	
+    \makeheader
+    
+    \begin{cvsection}{Section with Itemize}
+        \begin{cvitemize}
+            {Left}
+            {Center heading of \texttt{CVItemize}}
+            {Right}
+                \cvitem{\texttt{CVItem} of arbitrary length. May be plain text or    
+                      \begin{itemize}
+                        \item sub-items
+                        \item and one more.
+                    \end{itemize}
+                    }
+                    [Remark]
+                    [List of Keywords]
+                \cvitem{Only content is mandatory.}[][]
+                \cvitem{Further information without remark.}[][some nice skills]
+        \end{cvitemize}
+    \end{cvsection}
+
+    \begin{cvsection}{Section with Subsections}
+        \begin{cvsubsection}
+            {Left}
+            {Center heading of \texttt{CVSubsection}}
+            {Right}
+            {keywords}
+                The main difference is that \texttt{CVSubsection} has a list of keywords for the entire section while \texttt{cvitem} has list of keywords per bullet point.
+        \end{cvsubsection}
+        %
+        \begin{cvsubsection}
+            {Only left is mandatory.}
+            {}
+            {}
+            {}
+        \end{cvsubsection}
+        %
+    \end{cvsection}
+
+\end{document}

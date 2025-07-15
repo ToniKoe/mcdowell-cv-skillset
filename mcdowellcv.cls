@@ -50,7 +50,7 @@
 \LoadClass[\papersize,\mainfontsize]{article}
 
 % Set document margins
-\usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry}
+\usepackage[left=0.6in,top=0.6in,right=0.6in,bottom=0.6in]{geometry}
 
 % Set font face
 \usepackage{fontspec}
@@ -66,8 +66,22 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
 % Required for ifthenelse statements
 \usepackage{etoolbox}
 
+\usepackage{xparse}
+
+% For mathematical symbols
+\usepackage{amsmath}
+\usepackage{csquotes}
+
 % Suppress page numbers
 \pagestyle{empty}
+
+% Links
+\usepackage[hidelinks]{hyperref}
+% to add small arrow after hyperrefs
+\newfontfamily\symbolfont{DejaVu Sans}
+\newcommand{\linkarrow}{\small $^{\text{\symbolfont↗}}$}
+\newcommand{\link}[2]{\href{#1}{#2\linkarrow}}
+
 
 % Flexible tables
 \usepackage{tabu}
@@ -203,7 +217,7 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
   \vspace*{\beforesectionheaderspace}
   % Set text margins to equal \tabcolsep (6pt by default)
   \begin{adjustwidth}{\sectionheadermargin}{\sectionheadermargin}
-    \textsc{\textbf{#1}}
+        \textsc{\textbf{#1}}
   \end{adjustwidth}
   \vspace*{\beforesectionheaderhrulespace}
   \hrule height \sectionheaderhrlueheight
@@ -218,29 +232,77 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
 \newtoggle{centertitledefined}
 \newtoggle{righttitledefined}
 
-\newenvironment{cvsubsection}[4][1]{
-  \notblank{#2}{\toggletrue{lefttitledefined}}{}
-  \notblank{#3}{\toggletrue{centertitledefined}}{}
-  \notblank{#4}{\toggletrue{righttitledefined}}{}
-  \ifboolexpr{togl {lefttitledefined} or togl {centertitledefined} or togl {righttitledefined}}{
+\newcommand{\cvsubsectionkeywords}{} % variable that will hold the 5th argument
+
+\newenvironment{cvsubsection}[5][1]{%
+  \def\cvsubsectionkeywords{#5} % store the keywords
+  \notblank{#2}{\toggletrue{lefttitledefined}}{}%
+  \notblank{#3}{\toggletrue{centertitledefined}}{}%
+  \notblank{#4}{\toggletrue{righttitledefined}}{}%
+  \ifboolexpr{togl {lefttitledefined} or togl {centertitledefined} or togl {righttitledefined}}{%
     \begin{tabu} to 1\textwidth { X[l,p] X[c,p] X[r,p] }
       \textbf{#2} & \textbf{#3} & \textbf{#4} \\
     \end{tabu}
-    % Add space according to the specidied number of lines
-    \ifnumcomp{#1}{=}{1}{\vspace*{\aftersinglelinesubsectionheaderspace}}{
-      \ifnumcomp{#1}{=}{2}{\vspace*{\afterdoublelinesubsectionheaderspace}}{
-        \vspace*{\aftermultilinesubsectionheaderspace}
-      }
-    }
-  }{
-    \vspace*{\afteremptysubsectionheaderspace}
-  }
-  \togglefalse{lefttitledefined}
-  \togglefalse{centertitledefined}
-  \togglefalse{righttitledefined}
+    \ifnumcomp{#1}{=}{1}{\vspace*{\aftersinglelinesubsectionheaderspace}}{%
+      \ifnumcomp{#1}{=}{2}{\vspace*{\afterdoublelinesubsectionheaderspace}}{%
+        \vspace*{\aftermultilinesubsectionheaderspace}}}%
+  }{%
+    \vspace*{\afteremptysubsectionheaderspace}%
+  }%
+  \togglefalse{lefttitledefined}%
+  \togglefalse{centertitledefined}%
+  \togglefalse{righttitledefined}%
   \begin{adjustwidth}{\subsectionmargin}{\subsectionmargin}
+    \noindent
+    \begin{minipage}[t]{0.81\textwidth}%
+}{%
+    \end{minipage}%
+    \hfill
+    \hspace*{-0.6em} % slightly move to the left to align with ruler
+    \begin{minipage}[t]{0.18\textwidth}
+      \raggedleft
+      {\small\textit{\cvsubsectionkeywords}
+      }%
+    \end{minipage}
+  \end{adjustwidth}
+  \vspace*{\aftersubsectionspace}
 }
-{
+
+% itemize: subsection without keyword margin split
+\newenvironment{cvitemize}[3]{% left, center, right all bold
+  \begin{tabu} to \textwidth { X[l,p] X[c,p] X[r,p] }
+    \textbf{#1} & \textbf{#2} & \textbf{#3} \\
+  \end{tabu}
+  \vspace*{\aftersubsectionspace} % spacing after header
+}{}
+
+% item: add keywords to each bulletpoint
+\NewDocumentCommand{\cvitem}{ m o o}{% content, remark, keywords
+    \vspace{-8pt} % adjust vertical position
+    \begin{adjustwidth}{\subsectionmargin}{\subsectionmargin}
+    \noindent
+    \begin{minipage}[t]{0.81\textwidth}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\topsep}{0pt}
+    \begin{itemize}
+        \item #1
+    \end{itemize}
+    \end{minipage}%
+    \hfill
+    \hspace*{-0.6em} % alignment tweak
+    \begin{minipage}[t]{0.18\textwidth}
+      \raggedleft
+      % if second argument (remark) not empty: print it
+      \if\relax\detokenize{#2}\relax\else\ #2\fi
+      % if 2 & 3 both non empty: print line break
+      \if\relax\detokenize{#2}\relax\else%
+            \if\relax\detokenize{#3}\relax\else \\\vspace{3pt} \fi%
+      \fi%
+      % print 3. argument (keywords) if not empty
+      \if\relax\detokenize{#3}\relax\else\ {\small \textit{#3}}\fi%
+      
+    \end{minipage}
   \end{adjustwidth}
   \vspace*{\aftersubsectionspace}
 }

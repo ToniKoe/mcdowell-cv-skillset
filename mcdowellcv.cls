@@ -82,6 +82,7 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
 \newcommand{\linkarrow}{\small $^{\text{\symbolfont↗}}$}
 \newcommand{\link}[2]{\href{#1}{#2\linkarrow}}
 
+\usepackage{csquotes}
 
 % Flexible tables
 \usepackage{tabu}
@@ -232,9 +233,38 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
 \newtoggle{centertitledefined}
 \newtoggle{righttitledefined}
 
+% subsection without keywords
+\newenvironment{cvsubsection}[4][1]{
+  \notblank{#2}{\toggletrue{lefttitledefined}}{}
+  \notblank{#3}{\toggletrue{centertitledefined}}{}
+  \notblank{#4}{\toggletrue{righttitledefined}}{}
+  \ifboolexpr{togl {lefttitledefined} or togl {centertitledefined} or togl {righttitledefined}}{
+    \begin{tabu} to 1\textwidth { X[l,p] X[c,p] X[r,p] }
+      \textbf{#2} & \textbf{#3} & \textbf{#4} \\
+    \end{tabu}
+    % Add space according to the specidied number of lines
+    \ifnumcomp{#1}{=}{1}{\vspace*{\aftersinglelinesubsectionheaderspace}}{
+      \ifnumcomp{#1}{=}{2}{\vspace*{\afterdoublelinesubsectionheaderspace}}{
+        \vspace*{\aftermultilinesubsectionheaderspace}
+      }
+    }
+  }{
+    \vspace*{\afteremptysubsectionheaderspace}
+  }
+  \togglefalse{lefttitledefined}
+  \togglefalse{centertitledefined}
+  \togglefalse{righttitledefined}
+  \begin{adjustwidth}{\subsectionmargin}{\subsectionmargin}
+}
+{
+  \end{adjustwidth}
+  \vspace*{\aftersubsectionspace}
+}
+
+% subsection with keywords
 \newcommand{\cvsubsectionkeywords}{} % variable that will hold the 5th argument
 
-\newenvironment{cvsubsection}[5][1]{%
+\newenvironment{cvkeywordsubsection}[5][1]{%
   \def\cvsubsectionkeywords{#5} % store the keywords
   \notblank{#2}{\toggletrue{lefttitledefined}}{}%
   \notblank{#3}{\toggletrue{centertitledefined}}{}%
@@ -271,7 +301,7 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
 % itemize: subsection without keyword margin split
 \newenvironment{cvitemize}[3]{% left, center, right all bold
   \begin{tabu} to \textwidth { X[l,p] X[c,p] X[r,p] }
-    \textbf{#1} & \textbf{#2} & \textbf{#3} \\
+    \textbf{#1} & \textbf{#2} & \textbf{#3} 
   \end{tabu}
   \vspace*{\aftersubsectionspace} % spacing after header
 }{}

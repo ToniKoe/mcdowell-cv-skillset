@@ -11,9 +11,13 @@ The class is based on `article` class.
 
 ## Examples
 - A minimal usage example is provided [here](./Examples/minimal_example.tex).
-<img src="https://github.com/dnl-blkv/mcdowell-cv/blob/master/McDowell_CV.png" width="240px"/>
+<img src="https://github.com/ToniKoe/mcdowell-cv-skillset/blob/master/Examples/minimal_example.png" width="240px"/>
+
 - An example CV with keywords is provided [here](./Examples/CV_Template_Keywords.tex).
+<img src="https://github.com/ToniKoe/mcdowell-cv-skillset/blob/master/Examples/CV_Template_Keywords.png" width="240px"/>
+
 - An example CV without keywords is provided [here](./Examples/CV_Template_noKeywords.tex).
+<img src="https://github.com/ToniKoe/mcdowell-cv-skillset/blob/master/Examples/CV_Template_noKeywords.png" width="240px"/>
 
 ## Use Cases
 - A great tool making it easy to build CVs: https://latexresu.me/.

@@ -1,0 +1,100 @@
+%% The MIT License (MIT)
+%%
+%% Copyright (c) 2015 Daniil Belyakov
+%%
+%% Permission is hereby granted, free of charge, to any person obtaining a copy
+%% of this software and associated documentation files (the "Software"), to deal
+%% in the Software without restriction, including without limitation the rights
+%% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+%% copies of the Software, and to permit persons to whom the Software is
+%% furnished to do so, subject to the following conditions:
+%%
+%% The above copyright notice and this permission notice shall be included in all
+%% copies or substantial portions of the Software.
+%%
+%% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+%% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+%% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+%% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+%% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+%% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+%% SOFTWARE.
+
+% The font could be set to Windows-specific Calibri by using the 'calibri' option
+\documentclass[]{mcdowellcv}
+
+% For mathematical symbols
+\usepackage{amsmath}
+
+% Set applicant's personal data for header
+\name{Gayle L. McDowell}
+\address{123 Spruce St, Apt 35 \linebreak Philadelphia PA 19103}
+\contacts{(555) 555-1212 \linebreak gayle@careercup.com}
+
+\begin{document}
+
+	% Print the header
+	\makeheader
+	
+	% Print the content
+	\begin{cvsection}{Employment}
+		\begin{cvkeywordsubsection}{Software Engineer, Intern}{Apple Computer}{06/2004--09/2004}{ Search Algorithms \\ DevOps \\ SQL \\ Microsoft SQL Server \\ iChat}
+			\begin{itemize}
+				\item Reduced time to render the user’s buddy list by 75\% by implementing prediction algorithm.
+				\item Implemented iChat integration with OS X Spotlight Search by creating tool which extracts metadata from saved chat transcripts and provides metadata to a system-wide search database.
+				\item Redesigned chat file format and implemented backwards compatibility for search.
+			\end{itemize}
+		\end{cvkeywordsubsection}
+		
+		\begin{cvkeywordsubsection}{Head Teaching Assistant}{University of Pennsylvania}{10/2001 -- 04/2005}{Teaching \\ Leadership}
+			\begin{itemize}
+				\item Courses: Advanced Java III, Mathematical Foundations of Computer Science I \& II.
+				\item Promoted to Head TA in Fall 2004; led weekly meetings and supervised four other TAs.
+			\end{itemize}
+		\end{cvkeywordsubsection}
+		
+		\begin{cvkeywordsubsection}{Software Design Engineer, Intern}{Microsoft Corporation}{Summers 2001 -- 2003}{DevOps \\ C++, flutter \\ Visual Studio \\ Interface Builder}
+			Visual Studio Core (Summer 2003)		
+			\begin{itemize}
+				\item Implemented user interface for the VS open file switcher (ctrl-tab), extended it to tool windows.
+				\item Created service to provide gradient across VS and VS add-ins. Optimized service via caching.
+			\end{itemize}
+			Programmer Productivity Research Center (Summers 2001, 2002)
+			\begin{itemize}
+				\item Built app to compute similarity of all methods in a code base; reduced time from $O(n^2)$ to $O(n\ log\ n)$.
+			\end{itemize}
+		\end{cvkeywordsubsection}
+	\end{cvsection}
+	
+	\begin{cvsection}{Education}
+		\begin{cvitemize}{Philadelphia, PA}{University of Pennsylvania}{10/2000 -- 05/2005}
+            \cvitem{M.S.E. in Computer and Information Science, May 2005.
+                \begin{itemize}
+                    \item Graduate Coursework: Software Foundations; Computer Architecture; Algorithms; Artificial Intelligence; Comparison of Learning Algorithms; Computational Theory.
+                \end{itemize}
+                }[\textbf{GPA: 3.6}][C++, Python\\ ML Algorithms]
+            \cvitem
+                {B.S.E. in Computer Science Engineering with Minor in Mathematics, May 2005.
+                \begin{itemize}
+                    \item Undergraduate Coursework: Operating Systems; Databases; Algorithms; Programming Languages; Comp. Architecture; Engineering Entrepreneurship; Calculus III.
+			\end{itemize}
+            }[In-major \textbf{GPA: 3.4.}][Data Science \\ Analytical Thinking]
+		\end{cvitemize}
+	\end{cvsection}
+	
+	\begin{cvsection}{Technical Experience}
+		\begin{cvitemize}{Projects}{}{}
+				\cvitem{\textbf{Multi-User Drawing Tool} (2004). Electronic classroom where multiple users can view and simultaneously draw on a “chalkboard” with each person’s edits synchronized}[][C++\\ MFC]
+				\cvitem{\textbf{Synchronized Calendar} (2003 – 2004). Desktop calendar with globally shared and synchronized calendars, allowing users to schedule meetings with other users.}[][C\#.NET \\ SQL, XML]
+				\cvitem{\textbf{Operating System} (2002).  UNIX-style OS with scheduler, file system, text editor and calculator.}[][C]
+		\end{cvitemize}
+	\end{cvsection}
+	
+	\begin{cvsection}{Additional Experience and Awards}
+		\begin{cvitemize}{}{}{}	
+				\cvitem{\textbf{Instructor (2003 – 2005):} Taught two full-credit Computer Science courses; average ratings of 4.8 out of 5.0.}[][Teaching]
+				\cvitem{\textbf{Third Prize, Senior Design Projects:} Awarded 3rd prize for Synchronized Calendar project, out of 100 projects.}[][Design]
+		\end{cvitemize}
+	\end{cvsection}
+\end{document}
+

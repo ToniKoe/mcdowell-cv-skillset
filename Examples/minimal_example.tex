@@ -1,4 +1,4 @@
-    %% The MIT License (MIT)
+%% The MIT License (MIT)
 %%
 %% Copyright (c) 2015 Daniil Belyakov
 %%
@@ -36,10 +36,10 @@
 	
     \makeheader
     
-    \begin{cvsection}{Section with Itemize}
+    \begin{cvsection}{Section with Itemization}
         \begin{cvitemize}
             {Left}
-            {Center heading of \texttt{CVItemize}}
+            {Center Heading}
             {Right}
                 \cvitem{\texttt{CVItem} of arbitrary length. May be plain text or    
                       \begin{itemize}
@@ -54,22 +54,33 @@
         \end{cvitemize}
     \end{cvsection}
 
-    \begin{cvsection}{Section with Subsections}
-        \begin{cvsubsection}
+    \begin{cvsection}{Section with Subsections and Keywords}
+        \begin{cvkeywordsubsection}
             {Left}
-            {Center heading of \texttt{CVSubsection}}
+            {Center Heading}
             {Right}
             {keywords}
-                The main difference is that \texttt{CVSubsection} has a list of keywords for the entire section while \texttt{cvitem} has list of keywords per bullet point.
-        \end{cvsubsection}
+                 This is a \texttt{CVKeywordSubsection} Environment. 
+                 The main differences in the environments are that \texttt{CVKeywordSubsection} takes a list of keywords, \texttt{CVSubsection} does not handle keywords nor offers the keyword margin.
+                 Further, \texttt{CVKeywordSubsection} has the list of keywords for the entire section, while \texttt{cvitem} has list of keywords per bullet point.
+        \end{cvkeywordsubsection}
         %
-        \begin{cvsubsection}
+        \begin{cvkeywordsubsection}
             {Only left is mandatory.}
             {}
             {}
             {}
-        \end{cvsubsection}
+            But still the page is split into content and keyword parts as we can see if we write enough text so that it stretches over more than one line. 
+        \end{cvkeywordsubsection}
         %
+    \end{cvsection}
+
+    \begin{cvsection}{Section with Subsections without Keywords}
+        \begin{cvsubsection}{Left}{Center Heading}{Right}
+            Content that stretches over entire pages without the keyword margin. Use whenever you like but probably aesthetically best when choosing either \texttt{cvsubsection} or \texttt{cvkeywordsubsection} for entire document.
+            
+        \end{cvsubsection}
+                   
     \end{cvsection}
 
 \end{document}

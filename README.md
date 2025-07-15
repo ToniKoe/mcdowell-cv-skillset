@@ -1,18 +1,19 @@
 # McDowell CV
-McDowell CV is a LuaLaTeX class for building neat and space-efficient CVs using the design originally proposed by Gayle L. McDowell at 
-http://www.careercup.com/resume.
+McDowell CV is a LuaLaTeX class for building neat and space-efficient CVs using the design originally proposed by Gayle L. McDowell at http://www.careercup.com/resume.
 
 The class is based on `article` class.
 
-## This fork
-- Add Skills or keywords to each CV entry. The right fifth of the page is reserved for these (optional) keywords.
-- `CVItemize`environment together with `CVItem` command allow smoother itemization with keywords per item.
+## Novelties in this fork
+- Add skills or keywords to each CV entry. The right 17% of the page can be reserved for these (optional) keywords.
+- `CVItemize` environment together with `CVItem` command allow smoother itemization with keywords per item.
 - Make URLs clickable and indicate them with small arrow.
+- Still compatible with original McDowell CV class, i.e. the usage without keywords.
 
 ## Examples
 - A minimal usage example is provided [here](./Examples/minimal_example.tex).
 <img src="https://github.com/dnl-blkv/mcdowell-cv/blob/master/McDowell_CV.png" width="240px"/>
-- An example CV is provided [here](./Examples/).
+- An example CV with keywords is provided [here](./Examples/CV_Template_Keywords.tex).
+- An example CV without keywords is provided [here](./Examples/CV_Template_noKeywords.tex).
 
 ## Use Cases
 - A great tool making it easy to build CVs: https://latexresu.me/.
@@ -31,9 +32,10 @@ The class features the following commands:
  
 ## Environments
 - `\begin{cvsection}{sectionname}` - prints a section with a header consisting of the name in bold small caps and a page-wide horizontal line below.
-- `\begin{cvsubsection}[linesnum]{left}{center}{right}{content}{keywords}` - prints a subsection with header in bold consisting of the `left`, `center` and `right` titles across page-width. Prints `keywords` in small, italic to right 17% of the page. The content of the section is printed to the left 81% of the page. 
-`left` is mandatory, `center`, `right` and `keywords` are optional.
-The optional `linesnum` argument defines the amount of lines in the header. The argument only affects the vertical spacing between the environment header and content thus eliminating the effect of *tabu* package vertical spacing bug.
+- `\begin{cvsubsection}[linesnum]{left}{center}{right}{content}` - prints a subsection with header in bold consisting of the `left`, `center` and `right` titles across page-width. Does not provide margin for keywords. 
+`left` is mandatory, `center` and `right` are optional. The optional `linesnum` argument defines the amount of lines in the header. The argument only affects the vertical spacing between the environment header and content thus eliminating the effect of *tabu* package vertical spacing bug.
+- `\begin{cvkeywordsubsection}[linesnum]{left}{center}{right}{content}{keywords}` - prints a subsection with header in bold consisting of the `left`, `center` and `right` titles across page-width. Prints `keywords` in small, italic to right 17% of the page. The content of the section is printed to the left 81% of the page.
+`left` is mandatory, `center`, `right` and `keywords` are optional. `linesum` see above.
 - `\begin{cvitemize}{left}{center}{right}` - prints section with header in bold consisting of the `left`, `center` and `right` titles. In contrast to `cvsubsection` it does not trigger keyword split of section. 
 - `\cvitem{bullet point content}[right][keywords]` - prints `bullet point content` in left 81% and `right` to right 17% of page. `right` is printed in normal text size and font, `keywords` are printed in small and italic.
 

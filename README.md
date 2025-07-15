@@ -33,6 +33,7 @@ The class features the following commands:
 - `\contacts{contacts}` - defines the applicant's contacts to be printed by `\printheader`.
 - `\makecvheader` - prints the CV header consisting of the name (see the `\name` command), address (see the `\address` command) and contacts (see the `\contacts` command).
 - `\link{URL}{display text}` - displays `display text`$^↗$ while it references `URL`.
+-  `\cvitem{bullet point content}[right][keywords]` - prints `bullet point content` in left 81% and `right` to right 17% of page. `right` is printed in normal text size and font, `keywords` are printed in small and italic. Should be in `cvitemize` environment; if only within `cvsection` environment need to adjust vertical spacing by `\vspace{8pt}` before first `\cvitem`.
  
 ## Environments
 - `\begin{cvsection}{sectionname}` - prints a section with a header consisting of the name in bold small caps and a page-wide horizontal line below.
@@ -41,7 +42,6 @@ The class features the following commands:
 - `\begin{cvkeywordsubsection}[linesnum]{left}{center}{right}{content}{keywords}` - prints a subsection with header in bold consisting of the `left`, `center` and `right` titles across page-width. Prints `keywords` in small, italic to right 17% of the page. The content of the section is printed to the left 81% of the page.
 `left` is mandatory, `center`, `right` and `keywords` are optional. `linesum` see above.
 - `\begin{cvitemize}{left}{center}{right}` - prints section with header in bold consisting of the `left`, `center` and `right` titles. In contrast to `cvsubsection` it does not trigger keyword split of section. 
-- `\cvitem{bullet point content}[right][keywords]` - prints `bullet point content` in left 81% and `right` to right 17% of page. `right` is printed in normal text size and font, `keywords` are printed in small and italic.
 
 ## Build Instructions
 - Make sure [`lualatex`](https://www.luatex.org/download.html) is installed on your machine and is available in the terminal or a command line client of your choice.

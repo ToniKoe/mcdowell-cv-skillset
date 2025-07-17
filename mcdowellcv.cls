@@ -22,6 +22,9 @@
 
 \ProvidesClass{mcdowellcv}[2022/03/18 v1.2.0 McDowell CV class]
 
+\newcommand{\maintextwidth}{0.8\textwidth}
+\newcommand{\margintextwidth}{0.19\textwidth}
+
 % Set up the fonts according to options
 \def\mainfontsize{11pt}
 \def\mainfontface{Times New Roman}
@@ -284,12 +287,12 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
   \togglefalse{righttitledefined}%
   \begin{adjustwidth}{\subsectionmargin}{\subsectionmargin}
     \noindent
-    \begin{minipage}[t]{0.81\textwidth}%
+    \begin{minipage}[t]{\maintextwidth}%
 }{%
     \end{minipage}%
     \hfill
     \hspace*{-0.6em} % slightly move to the left to align with ruler
-    \begin{minipage}[t]{0.18\textwidth}
+    \begin{minipage}[t]{\margintextwidth}
       \raggedleft
       {\small\textit{\cvsubsectionkeywords}
       }%
@@ -311,7 +314,7 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
     \vspace{-8pt} % adjust vertical position
     \begin{adjustwidth}{\subsectionmargin}{\subsectionmargin}
     \noindent
-    \begin{minipage}[t]{0.81\textwidth}
+    \begin{minipage}[t]{\maintextwidth}
     \setlength{\itemsep}{0pt}
     \setlength{\parskip}{0pt}
     \setlength{\topsep}{0pt}
@@ -321,7 +324,7 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
     \end{minipage}%
     \hfill
     \hspace*{-0.6em} % alignment tweak
-    \begin{minipage}[t]{0.18\textwidth}
+    \begin{minipage}[t]{\margintextwidth}
       \raggedleft
       % if second argument (remark) not empty: print it
       \if\relax\detokenize{#2}\relax\else\ #2\fi

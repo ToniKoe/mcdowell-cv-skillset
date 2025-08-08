@@ -85,6 +85,15 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
 \newcommand{\linkarrow}{\small $^{\text{\symbolfont↗}}$}
 \newcommand{\link}[2]{\href{#1}{#2\linkarrow}}
 
+
+% Highlighting Keywords
+% underline
+\usepackage[normalem]{ulem}
+\newcommand{\highlight}[1]{\uline{#1}}
+% slightly larger
+% \newcommand{\highlight}[1]{{\fontsize{11.5pt}{15.6pt}\selectfont #1}}
+% \newcommand{\highlight}[1]{\textbf{#1}}
+
 \usepackage{csquotes}
 
 % Flexible tables

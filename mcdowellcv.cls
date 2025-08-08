@@ -180,9 +180,27 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
 \newcommand\address[1]{\def\@address{#1}}
 \address{}
 
-\newcommand\printaddress{
-  \small{\@address}
-}
+\newcommand{\city}[1]{\def\@city{#1}}
+\city{}
+
+\newcommand{\country}[1]{\def\@country{#1}}
+\country{}
+
+\newcommand{\personallinks}[1]{\def\@personallinks{#1}}
+\personallinks{}
+
+\if\relax\detokenize{\address}\relax
+  \newcommand\printaddress{
+      \small{\@address}
+    }
+    \newcommand{\city}{ }
+\else
+  \newcommand\printaddress{
+      \small{\@city, \@country \linebreak \@personallinks}
+    }
+\fi
+
+
 
 \makeatother
 
@@ -351,5 +369,17 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
     \end{minipage}
   \end{adjustwidth}
   \vspace*{\aftersubsectionspace}
+}
+
+\AtEndDocument{
+
+    \vfill
+    \begin{flushleft}
+    \begin{tabular}{p{5cm} p{4.8cm} p{7cm}}
+    \@city, \today & & \\
+     \hrulefill & &  \hrulefill \\
+     Place, Date & & \@name
+    \end{tabular}
+    \end{flushleft}
 }
 \makeatother

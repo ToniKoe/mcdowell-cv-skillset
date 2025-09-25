@@ -53,7 +53,7 @@
 \LoadClass[\papersize,\mainfontsize]{article}
 
 % Set document margins
-\usepackage[left=0.6in,top=0.6in,right=0.6in,bottom=0.6in]{geometry}
+\usepackage[left=0.6in,top=0.6in,right=0.6in,bottom=0.4in]{geometry}
 
 % Set font face
 \usepackage{fontspec}
@@ -371,15 +371,32 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
   \vspace*{\aftersubsectionspace}
 }
 
-\AtEndDocument{
-
-    \vfill
+\newcommand{\addSignature}{%
+    \vspace*{\fill}      % Push following content to page bottom
     \begin{flushleft}
     \begin{tabular}{p{5cm} p{4.8cm} p{7cm}}
-    \@city, \today & & \\
-     \hrulefill & &  \hrulefill \\
-     Place, Date & & \@name
+        \@city, \today & & \\
+        \hrulefill & &  \hrulefill \\
+        Place, Date & & \@name \\
+        && \\
+        && \\
+        &&
     \end{tabular}
     \end{flushleft}
 }
+
+%\AtEndDocument{%
+
+%    \vfill
+%    \begin{flushleft}
+%    \begin{tabular}{p{5cm} p{4.8cm} p{7cm}}
+%    \@city, \today & & \\
+%     \hrulefill & &  \hrulefill \\
+%     Place, Date & & \@name\\
+%     && \\
+%     && \\
+%     &&
+%    \end{tabular}
+%    \end{flushleft}
+%}
 \makeatother

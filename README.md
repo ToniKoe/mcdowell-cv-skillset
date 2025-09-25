@@ -35,7 +35,8 @@ The class features the following commands:
 - `\makecvheader` - prints the CV header consisting of the name (see the `\name` command), address (see the `\address` command) and contacts (see the `\contacts` command).
 - `\link{URL}{display text}` - displays `display text`$^↗$ while it references `URL`.
 -  `\cvitem{bullet point content}[right][keywords]` - prints `bullet point content` in left 81% and `right` to right 17% of page. `right` is printed in normal text size and font, `keywords` are printed in small and italic. Should be in `cvitemize` environment; if only within `cvsection` environment need to adjust vertical spacing by `\vspace{8pt}` before first `\cvitem`.
- 
+- `\addSignature` prints Place, Date and Name together with signature line at the end of the document.
+  
 ## Environments
 - `\begin{cvsection}{sectionname}` - prints a section with a header consisting of the name in bold small caps and a page-wide horizontal line below.
 - `\begin{cvsubsection}[linesnum]{left}{center}{right}{content}` - prints a subsection with header in bold consisting of the `left`, `center` and `right` titles across page-width. Does not provide margin for keywords. 
